@@ -55,8 +55,6 @@ export const gestDestinationFolders = (): Map<string, Map<string, IRule>> =>
     destinationFolders.set(item, object)
   })
 
-  console.log(destinationFolders)
-
   return destinationFolders
 }
 
