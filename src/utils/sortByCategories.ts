@@ -21,6 +21,7 @@ export const sortByCategories = (): Map<string, string[]> =>
       for (const folder of sourceFolders)
       {
         const itemPath = path.join(folder, dir)
+        if (!fs.existsSync(itemPath)) continue
 
         try
         {
