@@ -11,7 +11,7 @@ export const findFoldersWithFile = (rootFolder: string, endsUntil: string[], all
   const exploreFolders = (currentFolder: string): void =>
   {
     if (fs.lstatSync(currentFolder).isFile()) return
-    if (Config.IGNORED_FOLDERS.includes(currentFolder)) return
+    if (Config.IGNORED_FOLDERS.some((ignoredFolder) => !allowRootOnly && currentFolder.includes(ignoredFolder))) return
 
     const subFolders = fs.readdirSync(currentFolder, { withFileTypes: true })
       .filter((dirent) => allowRootOnly ? true : !dirent.name.startsWith('.'))
@@ -54,6 +54,8 @@ export const gestDestinationFolders = (): Map<string, Map<string, IRule>> =>
     const object = parseRules(path.join(item, '.rules'))
     destinationFolders.set(item, object)
   })
+
+  console.log(destinationFolders)
 
   return destinationFolders
 }
