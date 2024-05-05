@@ -1,7 +1,7 @@
 {
   "name": "sortbycat",
   "module": "sbc.ts",
-  "version": "2024.4.5",
+  "version": "2024.4.5-stable",
   "type": "module",
   "scripts": {
     "start": "bun --env-file=.env src/sbc.ts",
